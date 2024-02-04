@@ -1,5 +1,39 @@
 .hits {
     margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    .hits-title {
+        text-align: center;
+        font-size: 36px;
+    }
+    .hits-content {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .card {
+        width: 13rem;
+        border: 1px solid darkviolet;
+        .card-img-top:hover {
+            cursor: pointer;
+        }
+        .card-body {
+            .card-title {
+                text-align: center;
+            }
+            .card-text {
+                text-align: center;
+            }
+            .btn {
+                background-color: #9D81BA;
+                font-size: 16px;
+                color: black;
+                font-weight: 700;
+                border-radius: 10px;
+                border: 2px solid darkviolet;
+            }
+            .btn:hover {
+                font-size: 18px;
+                color: whitesmoke;
+            }
+        }
+    }
 }
