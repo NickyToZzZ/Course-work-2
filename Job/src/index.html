@@ -16,7 +16,24 @@
             <header class="header">
                 <img class="header__logo" src="./img/header/pngimg.com - wildberries_PNG4.png" alt="logo">
                 <input class="header__input" type="text" placeholder="Поиск">
-                <button class="basket-btn">Корзина</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Корзина
+                </button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Корзина:</h1>
+                                <button class="modal-clear-basket-btn">Очистить корзину</button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Заказать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </header>
 
             <div class="carousel">
@@ -48,7 +65,7 @@
                 <h2 class="hits-title">Хиты продаж:</h2>
                 <div class="hits-content">
                     <div class="card">
-                        <img src="https://loremflickr.com/640/480/business?random=1" class="card-img-top" alt="#">
+                        <img src="https://loremflickr.com/640/480/food?random=1" class="card-img-top" alt="#">
                         <div class="card-body">
                             <h5 class="card-title">Sleek Rubber Chips</h5>
                             <p class="card-text">197.00$</p>
@@ -56,7 +73,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://loremflickr.com/640/480/business?random=2" class="card-img-top" alt="#">
+                        <img src="https://loremflickr.com/640/480/food?random=2" class="card-img-top" alt="#">
                         <div class="card-body">
                             <h5 class="card-title">Electronic Wooden Ball</h5>
                             <p class="card-text">217.00$</p>
@@ -64,7 +81,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://loremflickr.com/640/480/business?random=3" class="card-img-top" alt="#">
+                        <img src="https://loremflickr.com/640/480/food?random=3" class="card-img-top" alt="#">
                         <div class="card-body">
                             <h5 class="card-title">Intelligent Rubber Salad</h5>
                             <p class="card-text">397.00$</p>
@@ -72,7 +89,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://loremflickr.com/640/480/business?random=4" class="card-img-top" alt="#">
+                        <img src="https://loremflickr.com/640/480/food?random=4" class="card-img-top" alt="#">
                         <div class="card-body">
                             <h5 class="card-title">Unbranded Metal Chips</h5>
                             <p class="card-text">404.00$</p>
@@ -80,7 +97,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://loremflickr.com/640/480/business?random=5" class="card-img-top" alt="#">
+                        <img src="https://loremflickr.com/640/480/food?random=5" class="card-img-top" alt="#">
                         <div class="card-body">
                             <h5 class="card-title">Fantastic Granite Shirt</h5>
                             <p class="card-text">913.00$</p>

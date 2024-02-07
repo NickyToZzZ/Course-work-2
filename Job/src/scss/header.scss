@@ -12,17 +12,50 @@
         border-radius: 10px;
         border: 3px solid lightpink;
     }
-    .basket-btn {
-        width: 100px;
+    .btn {
+        width: 120px;
+        text-align: center;
         background-color: #9D81BA;
+        color: black;
         font-size: 18px;
         font-weight: 700;
         border-radius: 10px;
         border: 2px solid darkviolet;
     }
-    .basket-btn:hover {
+    .btn:hover {
         font-size: 20px;
         cursor: pointer;
         color: whitesmoke;
+        background-color: #9D81BA;
+        border: 2px solid darkviolet;
+    }
+    .modal {
+        .modal-dialog {
+            .modal-content {
+                .modal-header {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    .modal-clear-basket-btn {
+                        font-size: 14px;
+                        height: 29px;
+                        background-color: pink;
+                        font-weight: 700;
+                        text-align: center;
+                        border-radius: 10px;
+                        border: 3px solid lightpink;
+                    }
+                    .modal-clear-basket-btn:hover {
+                        cursor: pointer;
+                        color: whitesmoke;
+                        font-size: 15px;
+                    }
+                }
+                .modal-footer {
+                    .btn-primary {
+                        height: 43px;
+                    }
+                }
+            }
+        }
     }
 }

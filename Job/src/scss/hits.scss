@@ -6,6 +6,7 @@
     }
     .hits-content {
         margin-top: 30px;
+        margin-bottom: 30px;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
     }
@@ -13,7 +14,7 @@
         width: 13rem;
         border: 1px solid darkviolet;
         .card-img-top:hover {
-            cursor: pointer;
+            cursor: zoom-in;
         }
         .card-body {
             .card-title {
@@ -24,6 +25,7 @@
             }
             .btn {
                 background-color: #9D81BA;
+                height: 64px;
                 font-size: 16px;
                 color: black;
                 font-weight: 700;
