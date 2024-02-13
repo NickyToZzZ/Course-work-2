@@ -38,6 +38,8 @@ html{
 .wb-header-modal {
     display: none;
     position: fixed;
+    flex-direction: column;
+    justify-content: space-between;
     z-index: 1;
     width: 300px;
     height: 500px;
@@ -51,15 +53,49 @@ html{
     border-bottom: 3px solid lightgrey;
     border-radius: 10px;
 }
-.wb-header-modal__clear-btn:hover {
+.wb-header-modal__clear-btn{
     cursor: pointer;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    background-color: transparent;
+    padding: 5px;
+}
+.wb-header-modal__close-btn{
+    cursor: pointer;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    background-color: transparent;
+    padding: 5px;
+}
+.wb-header-modal__clear-btn:hover {
     text-decoration: underline;
     color: red;
 }
-.wb-header-modal__close-btn:hover {
-    cursor: pointer;
-    text-decoration: underline; 
+.wb-header-modal__close-btn:hover{
+    color: red;
+}    
+.wb-header-modal-footer{
+    display:  flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 3px solid lightgrey;
+    border-radius: 10px;
 }
+.wb-header-modal-footer__text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin: 10px;
+    font-weight: 400;
+}
+.wb-header-modal-footer__sum{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin: 10px;
+    font-weight: 400;
+}
+
 .wb-container__slider{
     width: 90%;
     height: 200px;
@@ -80,7 +116,6 @@ html{
     flex-direction: row;
     flex-wrap: wrap;
 }
-
 .card-container{
     width: 250px;
     height: 400px;
@@ -99,13 +134,29 @@ html{
     position: relative;
 }
 .card-box__image{
-    cursor: zoom-in;
     width: 99%;
     height: 99%;
     border: 1px solid white;
     background-size: cover;
     border-radius: 10px;
     box-sizing: border-box;
+}
+.card-box__quickview{
+    display: none;
+    position: absolute;
+    top: 130px;
+    left: 35px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: rgb(79, 79, 79);
+    border-radius: 10px;
+    border-color: transparent;
+    opacity: 0.9;
+}
+.card-box__quickview:active{
+    transform: scale(0.95);
+    transition: 0.2s;
 }
 .card-box__discount{
     font-family: Arial;
@@ -119,13 +170,21 @@ html{
     padding: 5px;
 }
 .card-box__buybtn{
-    cursor: pointer;
     width: 50px;
     height: 50px;
     position: absolute;
     top: 245px;
     left: 162px;
 }
+.card-box__buybtn:hover{
+    transform: scale(0.9);
+    transition: 0.2s;
+}
+.card-box__buybtn:active{
+    transform: scale(0.8);
+    transition: 0.1s;
+}
+
 .card-infozone{
     width: 90%;
     height: 100px;
@@ -159,10 +218,4 @@ html{
     position: absolute;
     top: 20px;
     left: 18px;
-}
-.picture-modal-style {
-    position: absolute;
-    z-index: 1;
-    width: 600px;
-    height: 600px;
 }

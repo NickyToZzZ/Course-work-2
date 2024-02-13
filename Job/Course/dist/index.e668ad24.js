@@ -599,13 +599,20 @@ function createWBElements() {
     const cartWB = (0, _moduleJs.createPageElement)("img", "wb-header__cart", headerWB, "", "", ""); //корзина
     // настраиваем открытие корзины
     cartWB.addEventListener("click", ()=>{
-        return modalCart.style.display = "block";
+        return modalCart.style.display = "flex";
     });
     const modalCart = (0, _moduleJs.createPageElement)("div", "wb-header-modal", mainContainer, "", "", ""); // модальное окно
     const modalHeader = (0, _moduleJs.createPageElement)("header", "wb-header-modal-header", modalCart, "", "", ""); // header модального окна
     const modalContent = (0, _moduleJs.createPageElement)("div", "wb-header-modal-content", modalCart, "", "", ""); // содержимое модального окна
-    const modalClearBtn = (0, _moduleJs.createPageElement)("p", "wb-header-modal__clear-btn", modalHeader, "", "\u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C \u043A\u043E\u0440\u0437\u0438\u043D\u0443", ""); // кнопка очистить корзину
-    const modalCloseBtn = (0, _moduleJs.createPageElement)("p", "wb-header-modal__close-btn", modalHeader, "", "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u043A\u043E\u0440\u0437\u0438\u043D\u0443", ""); // кнопка закрытия модального окна
+    const modalClearBtn = (0, _moduleJs.createPageElement)("button", "wb-header-modal__clear-btn", modalHeader, "", "\u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C \u043A\u043E\u0440\u0437\u0438\u043D\u0443", ""); // кнопка очистить корзину
+    modalClearBtn.addEventListener("click", ()=>{
+        localStorage.clear();
+        modalContent.innerHTML = "";
+    });
+    const modalCloseBtn = (0, _moduleJs.createPageElement)("button", "wb-header-modal__close-btn", modalHeader, "", "X", ""); // кнопка закрытия модального окна
+    const modalSumZone = (0, _moduleJs.createPageElement)("div", "wb-header-modal-footer", modalCart, "", "", ""); // Футтер с суммой всех товаров
+    const modalSumText = (0, _moduleJs.createPageElement)("h3", "wb-header-modal-footer__text", modalSumZone, "", "\u0421\u0443\u043C\u043C\u0430 \u0432\u0441\u0435\u0445 \u0442\u043E\u0432\u0430\u0440\u043E\u0432:", ""); //Просто заголовок "Сумма"
+    const modalSumCalc = (0, _moduleJs.createPageElement)("h3", "wb-header-modal-footer__sum", modalSumZone, "", "", "");
     //настриваем закрытие модального окна
     modalCloseBtn.addEventListener("click", ()=>{
         modalCart.style.display = "block";
@@ -618,8 +625,8 @@ function createWBElements() {
     logoWB.setAttribute("src", "https://static.tildacdn.com/tild3134-3336-4530-b166-653865636661/i_1.png");
     cartWB.setAttribute("src", "https://avatanplus.com/files/resources/original/5ed9e94e590e117283375a1d.png");
 }
-// функция получения mockap
 createWBElements();
+// функция получения mockap 
 async function getData() {
     let response = await fetch("https://65cb5414efec34d9ed87430b.mockapi.io/wb1/WB/");
     let banners = await response.json();
@@ -638,33 +645,31 @@ function createWBCard(obj) {
     const cardContainer = (0, _moduleJs.createPageElement)("div", "card-container", cardsWBZone, "", "", ""); //Контейнер для карточки товара
     const cardPictureZone = (0, _moduleJs.createPageElement)("div", "card-box", cardContainer, "", "", ""); //Область с картинкой, скидкой и кнопкой "Добавить в корзину"
     const cardPicture = (0, _moduleJs.createPageElement)("div", "card-box__image", cardPictureZone, "", "", ""); //Картинка товара
+    const cardPictureQuickBtn = (0, _moduleJs.createPageElement)("button", "card-box__quickview", cardPictureZone, "", "\u0411\u044B\u0441\u0442\u0440\u044B\u0439 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440", ""); //кнопка "Быстрый просмотр"
     // увеличение картинки
     cardPicture.addEventListener("click", ()=>{});
     const cardDiscount = (0, _moduleJs.createPageElement)("h5", "card-box__discount", cardPictureZone, "", "- " + discount + "%", ""); //Размер скидки в процентах
     const cardBuyBtn = (0, _moduleJs.createPageElement)("img", "card-box__buybtn", cardPictureZone, "", "", ""); //Кнопка "Добавить в корзину"
-    // добавление в корзину
-    cardBuyBtn.addEventListener("click", ()=>{
-        addToLS(obj.id, obj.title, Math.round(obj.price));
+    // добавляем карту в LS
+    cardBuyBtn.addEventListener("click", (event)=>{
+        (0, _moduleJs.addToLS)(obj.id, obj.title, newPrice);
+        event.preventDefault();
+        if (event.target.classList.contains("card-box__buybtn")) (0, _moduleJs.getFromLS)(document.querySelector(".wb-header-modal-content"));
     });
     const cardInfoZone = (0, _moduleJs.createPageElement)("div", "card-infozone", cardContainer, "", "", ""); //Область с ценой, старой ценой и наименованием товара
     const cardPrice = (0, _moduleJs.createPageElement)("h4", "card-infozone__price", cardInfoZone, "", newPrice + "$", ""); //Цена товара
     const cardPriceCancel = (0, _moduleJs.createPageElement)("h4", "card-infozone__priceCancel", cardInfoZone, "", oldPrice + "$", ""); //Бывшая цена товара
     const cardDiscription = (0, _moduleJs.createPageElement)("h4", "card-infozone__discription", cardInfoZone, "", obj.title, ""); //Название товара
-    // добавляем в LS
-    function addToLS(itemId, itemTitle, itemPrice) {
-        const item = {
-            id: itemId,
-            title: itemTitle,
-            price: itemPrice
-        };
-        localStorage.setItem("Products", JSON.stringify([
-            ...JSON.parse(localStorage.getItem("Products") || "[]"),
-            item
-        ]));
-    }
     // Добавляем аттрибуты элементам
     cardPicture.style.backgroundImage = `url('${obj.picture}?=random${obj.id}')`;
     cardBuyBtn.setAttribute("src", "https://www.expresselectrical.co.uk/imagecache/33034493-5989-403c-99d4-a9570075c59a/Order-Information_592x591.png");
+    //Показываем кнопку "Быстрый просмотр" при наведении на карточку товара
+    cardPictureZone.addEventListener("mouseover", function() {
+        cardPictureQuickBtn.style.display = "block";
+    });
+    cardPictureZone.addEventListener("mouseout", function() {
+        cardPictureQuickBtn.style.display = "none";
+    });
 }
 
 },{"./module.js":"lFa3e"}],"lFa3e":[function(require,module,exports) {
@@ -672,6 +677,10 @@ function createWBCard(obj) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createPageElement", ()=>createPageElement);
+// добавляем в LS
+parcelHelpers.export(exports, "addToLS", ()=>addToLS);
+// извлекаем из LS
+parcelHelpers.export(exports, "getFromLS", ()=>getFromLS);
 function createPageElement(tag, className, placeOnPage, idName, text, placeholder) {
     const element = document.createElement(tag);
     element.classList.add(className);
@@ -680,6 +689,28 @@ function createPageElement(tag, className, placeOnPage, idName, text, placeholde
     element.innerHTML = text;
     element.placeholder = placeholder;
     return element;
+}
+function addToLS(itemId, itemTitle, itemPrice) {
+    const item = {
+        id: itemId,
+        title: itemTitle,
+        price: itemPrice
+    };
+    localStorage.setItem("Products", JSON.stringify([
+        ...JSON.parse(localStorage.getItem("Products") || "[]"),
+        item
+    ]));
+}
+function getFromLS(holder) {
+    let items = localStorage.getItem("Products") ? Array.from(JSON.parse(localStorage.getItem("Products"))) : [];
+    let totalPrice = 0;
+    if (items.length > 0) {
+        for(let i = 0; i < items.length; i++){
+            holder.innerHTML += "\u0422\u043E\u0432\u0430\u0440: " + items[i].title + ", " + " \u0426\u0435\u043D\u0430: " + items[i].price;
+            totalPrice += +items[i].price;
+        }
+        document.querySelector(".wb-header-modal-footer__text").innerHTML = totalPrice;
+    }
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
