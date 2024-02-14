@@ -24,10 +24,10 @@ export function addToLS(itemId, itemTitle, itemPrice) {
 // извлекаем из LS
 export function getFromLS (holder) {
     let items = localStorage.getItem("Products") ? JSON.parse(localStorage.getItem("Products")) : [];
-    console.log(items)
     let totalPrice = 0;
+    holder.innerHTML = "";
     for (let i = 0; i < items.length; i++) {
-        holder.innerHTML += `<div class="wb-header-modal-content"><p>Товар: - ${items[i].title}</p><p>Цена: - ${items[i].price}</p></div>`;
+        holder.innerHTML += `<p>Товар: - ${items[i].title}</p><p>Цена: - ${items[i].price}</p>`;
         totalPrice += items[i].price;
     }
     document.querySelector(".wb-header-modal-footer__sum").innerHTML = totalPrice;

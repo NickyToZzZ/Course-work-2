@@ -86,12 +86,10 @@ function createWBCard(obj){
         })
     const cardPicture = createPageElement("div", "card-box__image", cardPictureZone, "", "", ""); //Картинка товара
     const cardPictureQuickBtn = createPageElement("button", "card-box__quickview", cardPictureZone, "", "Быстрый просмотр", ""); //кнопка "Быстрый просмотр"
-        // увеличение картинки
-        cardPicture.addEventListener("click", () => {})
     const cardDiscount = createPageElement("h5", "card-box__discount", cardPictureZone, "","- " + discount + "%", ""); //Размер скидки в процентах
     const cardBuyBtn = createPageElement("img", "card-box__buybtn", cardPictureZone, "", "", ""); //Кнопка "Добавить в корзину"
         // добавляем карту в LS
-        cardBuyBtn.addEventListener("click", (event) => {
+        cardBuyBtn.addEventListener("click", () => {
             addToLS(obj.id, obj.title, newPrice);
             getFromLS(document.querySelector(".wb-header-modal-content"));
         })
@@ -103,4 +101,23 @@ function createWBCard(obj){
     // Добавляем аттрибуты элементам
     cardPicture.style.backgroundImage = `url('${obj.picture}?=random${obj.id}')`;
     cardBuyBtn.setAttribute("src", "https://www.expresselectrical.co.uk/imagecache/33034493-5989-403c-99d4-a9570075c59a/Order-Information_592x591.png");
+    modalPictureZone.style.backgroundImage = cardPicture.style.backgroundImage; //вставляем увеличенную картинку. ПРОБЛЕМА! вставляется рандомная картинка!
+
+    //Открытие окна "Быстрого просмотра"
+    cardPictureQuickBtn.addEventListener("click", () => {
+        modalPictureWindow.style.display = "block";
+    })
+
+    //Закрытие модального окна "Быстрого просмотра"
+    modalPictureClose.addEventListener("click", () => {
+    if (modalPictureWindow.style.display = "block") {
+        return modalPictureWindow.style.display = "none"
+    }
+    })
 }
+
+// Создаём модальное окно "Быстрого просмотра"
+const selectMain = document.querySelector(".wb-container");
+const modalPictureWindow = createPageElement("div", "modalPicture-window", selectMain, "", "", ""); //главное окно "Быстрого просмотра"
+const modalPictureClose = createPageElement("button", "modalPicture-windows__closebtn", modalPictureWindow, "", "Закрыть", ""); //кнопка "Закрыть" окна "Быстрого просмотра"
+const modalPictureZone = createPageElement("div", "modalPictureZone", modalPictureWindow, "", "", ""); //Область с увеличенной картинкой

@@ -2,226 +2,288 @@ html{
     margin: 0;
     padding: 0;
     background: linear-gradient(90deg, rgba(126,57,230,1) 0%, rgba(130,66,165,1) 100%);
-}
-.wb-container{
-    width: 1170px;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-}
-.wb-header{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-.wb-header__wblogo{
-    width: 50px;
-    cursor: pointer;
-}
-.wb-header__search{
-    width: 80%;
-    border: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 36px;
-    outline: none;
-}
-.wb-header__cart{
-    width: 50px;
-    color: white;
-    cursor: pointer;
-}
-.wb-header-modal {
-    display: none;
-    position: fixed;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 1;
-    width: 300px;
-    height: 500px;
-    background-color: white;
-    border: 3px solid lightgrey;
-    border-radius: 10px;
-}
-.wb-header-modal-header {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 3px solid lightgrey;
-    border-radius: 10px;
-}
-.wb-header-modal-content {
-    overflow-y: scroll;
-}
-.wb-header-modal-content-block {
-    border-bottom: 3px solid lightgrey;
-    border-top: 3px solid lightgrey;
-}
-.wb-header-modal__clear-btn{
-    cursor: pointer;
-    border: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    background-color: transparent;
-    padding: 5px;
-}
-.wb-header-modal__close-btn{
-    cursor: pointer;
-    border: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    background-color: transparent;
-    padding: 5px;
-}
-.wb-header-modal__clear-btn:hover {
-    text-decoration: underline;
-    color: red;
-}
-.wb-header-modal__close-btn:hover{
-    color: red;
-}    
-.wb-header-modal-footer{
-    display:  flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-top: 3px solid lightgrey;
-    border-radius: 10px;
-}
-.wb-header-modal-footer__text{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    margin: 10px;
-    font-weight: 400;
-}
-.wb-header-modal-footer__sum{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    margin: 10px;
-    font-weight: 400;
+    .wb-container{
+        width: 1170px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+        .wb-header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            .wb-header__wblogo {
+                width: 50px;
+                cursor: pointer;
+            }
+            .wb-header__search{
+                width: 80%;
+                border: none;
+                border-radius: 10px;
+                text-align: center;
+                font-size: 36px;
+                outline: none;
+            }
+            .wb-header__cart{
+                width: 50px;
+                color: white;
+                cursor: pointer;
+            }
+        }
+        .wb-header-modal {
+            display: none;
+            position: fixed;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
+            width: 300px;
+            height: 500px;
+            background-color: white;
+            border: 3px solid lightgrey;
+            border-radius: 10px;
+            .wb-header-modal-header {
+                display: flex;
+                justify-content: space-around;
+                border-bottom: 3px solid lightgrey;
+                border-radius: 10px;
+                .wb-header-modal__clear-btn{
+                    cursor: pointer;
+                    border: none;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 15px;
+                    background-color: transparent;
+                    padding: 5px;
+                }
+                .wb-header-modal__clear-btn:hover {
+                    text-decoration: underline;
+                    color: red;
+                }
+                .wb-header-modal__close-btn{
+                    cursor: pointer;
+                    border: none;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 15px;
+                    background-color: transparent;
+                    padding: 5px;
+                }
+                .wb-header-modal__close-btn:hover{
+                    color: red;
+                }  
+            }
+            .wb-header-modal-content {
+                overflow-y: scroll;
+            }
+            .wb-header-modal-footer{
+                display:  flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border-top: 3px solid lightgrey;
+                border-radius: 10px;
+                .wb-header-modal-footer__text{
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 15px;
+                    margin: 10px;
+                    font-weight: 400;
+                }
+                .wb-header-modal-footer__sum{
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 15px;
+                    margin: 10px;
+                    font-weight: 400;
+                }
+            }
+        }
+        .wb-container__slider{
+            width: 90%;
+            height: 200px;
+            background-color: rgb(181, 179, 179);
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+        .wb-container__hits{
+            display: flex;
+            color: rgb(240, 240, 240);
+            font-family: Arial;
+        }
+        .wb-container__cards{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .card-container{
+                width: 250px;
+                height: 400px;
+                border: 2px solid white;
+                border-radius: 20px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 20px;
+                .card-box{
+                    width: 90%;
+                    height: 100%;
+                    margin-top: 10px;
+                    position: relative;
+                    .card-box__image{
+                        width: 99%;
+                        height: 99%;
+                        border: 1px solid white;
+                        background-size: cover;
+                        border-radius: 10px;
+                        box-sizing: border-box;
+                    }
+                    .card-box__quickview{
+                        cursor: zoom-in;
+                        display: none;
+                        position: absolute;
+                        top: 130px;
+                        left: 35px;
+                        padding: 10px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-weight: 600;
+                        color: rgb(79, 79, 79);
+                        border-radius: 10px;
+                        border-color: transparent;
+                        opacity: 0.9;
+                    }
+                    .card-box__quickview:active{
+                        transform: scale(0.95);
+                        transition: 0.2s;
+                    }
+                    .card-box__discount{
+                        font-family: Arial;
+                        font-size: 15px;
+                        font-weight: 400;
+                        color: white;
+                        position: absolute;
+                        top: 239px;
+                        left: 12px;
+                        background-color: rgb(198, 70, 70);
+                        padding: 5px;
+                    }
+                    .card-box__buybtn{
+                        width: 50px;
+                        height: 50px;
+                        position: absolute;
+                        top: 245px;
+                        left: 162px;
+                    }
+                    .card-box__buybtn:hover{
+                        cursor: pointer;
+                        transform: scale(0.9);
+                        transition: 0.2s;
+                    }
+                    .card-box__buybtn:active{
+                        transform: scale(0.8);
+                        transition: 0.1s;
+                    }
+                }
+                .card-infozone{
+                    width: 90%;
+                    height: 100px;
+                    position: relative;
+                    .card-infozone__price{
+                        color: white;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 22px;
+                        font-weight: 400;
+                        position: absolute;
+                        top: -17px;
+                        left: 12px;
+                    }
+                    .card-infozone__priceCancel{
+                        color: white;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 17px;
+                        font-weight: 400;
+                        text-decoration: line-through;
+                        text-decoration-color: red;
+                        position: absolute;
+                        top: -5px;
+                        left: 150px;
+                    }
+                    .card-infozone__discription{
+                        color: white;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 17px;
+                        font-weight: 400;
+                        position: absolute;
+                        top: 20px;
+                        left: 18px;
+                    }
+                }
+            }
+        }
+        .modalPicture-window{
+            display: none;
+            z-index: 1;
+            width: 70vw;
+            height: 80vh;
+            background-color: white;
+            position: fixed;
+            top:70px;
+            border-radius: 15px;
+            .modalPicture-windows__closebtn{
+                border: none;
+                background: transparent;
+                margin-top: 10px;
+                margin-left: 48%;
+                font-weight: 400;
+                font-size: 15px;
+                color: gray;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .modalPicture-windows__closebtn:hover{
+                cursor: pointer;
+                text-decoration: underline;
+            }
+            .modalPictureZone{
+                width: 92%;
+                height: 85%;
+                position: absolute;
+                top: 50px;
+                left: 35px;
+                border: no;
+                background-size: cover;
+            }
+        }
+    }
 }
 
-.wb-container__slider{
-    width: 90%;
-    height: 200px;
-    background-color: rgb(181, 179, 179);
-    margin-top: 50px;
-    border-radius: 20px;
-}
-.wb-container__hits{
-    display: flex;
-    color: rgb(240, 240, 240);
-    font-family: Arial;
-}
-.wb-container__cards{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.card-container{
-    width: 250px;
-    height: 400px;
-    border: 2px solid white;
-    border-radius: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-}
-.card-box{
-    width: 90%;
-    height: 100%;
-    margin-top: 10px;
-    position: relative;
-}
-.card-box__image{
-    width: 99%;
-    height: 99%;
-    border: 1px solid white;
-    background-size: cover;
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-.card-box__quickview{
-    display: none;
-    position: absolute;
-    top: 130px;
-    left: 35px;
-    padding: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    color: rgb(79, 79, 79);
-    border-radius: 10px;
-    border-color: transparent;
-    opacity: 0.9;
-}
-.card-box__quickview:active{
-    transform: scale(0.95);
-    transition: 0.2s;
-}
-.card-box__discount{
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: 400;
-    color: white;
-    position: absolute;
-    top: 239px;
-    left: 12px;
-    background-color: rgb(198, 70, 70);
-    padding: 5px;
-}
-.card-box__buybtn{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 245px;
-    left: 162px;
-}
-.card-box__buybtn:hover{
-    transform: scale(0.9);
-    transition: 0.2s;
-}
-.card-box__buybtn:active{
-    transform: scale(0.8);
-    transition: 0.1s;
-}
 
-.card-infozone{
-    width: 90%;
-    height: 100px;
-    position: relative;
-}
-.card-infozone__price{
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
-    font-weight: 400;
-    position: absolute;
-    top: -17px;
-    left: 12px;
-}
-.card-infozone__priceCancel{
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    text-decoration: line-through;
-    text-decoration-color: red;
-    position: absolute;
-    top: -5px;
-    left: 150px;
-}
-.card-infozone__discription{
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    position: absolute;
-    top: 20px;
-    left: 18px;
-}
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

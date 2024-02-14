@@ -654,12 +654,10 @@ function createWBCard(obj) {
     });
     const cardPicture = (0, _moduleJs.createPageElement)("div", "card-box__image", cardPictureZone, "", "", ""); //Картинка товара
     const cardPictureQuickBtn = (0, _moduleJs.createPageElement)("button", "card-box__quickview", cardPictureZone, "", "\u0411\u044B\u0441\u0442\u0440\u044B\u0439 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440", ""); //кнопка "Быстрый просмотр"
-    // увеличение картинки
-    cardPicture.addEventListener("click", ()=>{});
     const cardDiscount = (0, _moduleJs.createPageElement)("h5", "card-box__discount", cardPictureZone, "", "- " + discount + "%", ""); //Размер скидки в процентах
     const cardBuyBtn = (0, _moduleJs.createPageElement)("img", "card-box__buybtn", cardPictureZone, "", "", ""); //Кнопка "Добавить в корзину"
     // добавляем карту в LS
-    cardBuyBtn.addEventListener("click", (event)=>{
+    cardBuyBtn.addEventListener("click", ()=>{
         (0, _moduleJs.addToLS)(obj.id, obj.title, newPrice);
         (0, _moduleJs.getFromLS)(document.querySelector(".wb-header-modal-content"));
     });
@@ -670,7 +668,22 @@ function createWBCard(obj) {
     // Добавляем аттрибуты элементам
     cardPicture.style.backgroundImage = `url('${obj.picture}?=random${obj.id}')`;
     cardBuyBtn.setAttribute("src", "https://www.expresselectrical.co.uk/imagecache/33034493-5989-403c-99d4-a9570075c59a/Order-Information_592x591.png");
+    modalPictureZone.style.backgroundImage = cardPicture.style.backgroundImage; //вставляем увеличенную картинку. ПРОБЛЕМА! вставляется рандомная картинка!
+    //Открытие окна "Быстрого просмотра"
+    cardPictureQuickBtn.addEventListener("click", ()=>{
+        modalPictureWindow.style.display = "block";
+    });
+    //Закрытие модального окна "Быстрого просмотра"
+    modalPictureClose.addEventListener("click", ()=>{
+        modalPictureWindow.style.display = "block";
+        return modalPictureWindow.style.display = "none";
+    });
 }
+// Создаём модальное окно "Быстрого просмотра"
+const selectMain = document.querySelector(".wb-container");
+const modalPictureWindow = (0, _moduleJs.createPageElement)("div", "modalPicture-window", selectMain, "", "", ""); //главное окно "Быстрого просмотра"
+const modalPictureClose = (0, _moduleJs.createPageElement)("button", "modalPicture-windows__closebtn", modalPictureWindow, "", "\u0417\u0430\u043A\u0440\u044B\u0442\u044C", ""); //кнопка "Закрыть" окна "Быстрого просмотра"
+const modalPictureZone = (0, _moduleJs.createPageElement)("div", "modalPictureZone", modalPictureWindow, "", "", ""); //Область с увеличенной картинкой
 
 },{"./module.js":"lFa3e"}],"lFa3e":[function(require,module,exports) {
 //Функция создания элементов страницы:
@@ -703,10 +716,10 @@ function addToLS(itemId, itemTitle, itemPrice) {
 }
 function getFromLS(holder) {
     let items = localStorage.getItem("Products") ? JSON.parse(localStorage.getItem("Products")) : [];
-    console.log(items);
     let totalPrice = 0;
+    holder.innerHTML = "";
     for(let i = 0; i < items.length; i++){
-        holder.innerHTML += `<div class="wb-header-modal-content"><p>\u{422}\u{43E}\u{432}\u{430}\u{440}: - ${items[i].title}</p><p>\u{426}\u{435}\u{43D}\u{430}: - ${items[i].price}</p></div>`;
+        holder.innerHTML += `<p>\u{422}\u{43E}\u{432}\u{430}\u{440}: - ${items[i].title}</p><p>\u{426}\u{435}\u{43D}\u{430}: - ${items[i].price}</p>`;
         totalPrice += items[i].price;
     }
     document.querySelector(".wb-header-modal-footer__sum").innerHTML = totalPrice;

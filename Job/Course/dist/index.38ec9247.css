@@ -4,7 +4,7 @@ html {
   padding: 0;
 }
 
-.wb-container {
+html .wb-container {
   flex-direction: column;
   align-items: center;
   width: 1170px;
@@ -13,19 +13,19 @@ html {
   display: flex;
 }
 
-.wb-header {
+html .wb-container .wb-header {
   justify-content: space-between;
   width: 100%;
   margin-top: 20px;
   display: flex;
 }
 
-.wb-header__wblogo {
+html .wb-container .wb-header .wb-header__wblogo {
   cursor: pointer;
   width: 50px;
 }
 
-.wb-header__search {
+html .wb-container .wb-header .wb-header__search {
   text-align: center;
   border: none;
   border-radius: 10px;
@@ -34,13 +34,13 @@ html {
   font-size: 36px;
 }
 
-.wb-header__cart {
+html .wb-container .wb-header .wb-header__cart {
   color: #fff;
   cursor: pointer;
   width: 50px;
 }
 
-.wb-header-modal {
+html .wb-container .wb-header-modal {
   z-index: 1;
   background-color: #fff;
   border: 3px solid #d3d3d3;
@@ -53,23 +53,14 @@ html {
   position: fixed;
 }
 
-.wb-header-modal-header {
+html .wb-container .wb-header-modal .wb-header-modal-header {
   border-bottom: 3px solid #d3d3d3;
   border-radius: 10px;
   justify-content: space-around;
   display: flex;
 }
 
-.wb-header-modal-content {
-  overflow-y: scroll;
-}
-
-.wb-header-modal-content-block {
-  border-top: 3px solid #d3d3d3;
-  border-bottom: 3px solid #d3d3d3;
-}
-
-.wb-header-modal__clear-btn, .wb-header-modal__close-btn {
+html .wb-container .wb-header-modal .wb-header-modal-header .wb-header-modal__clear-btn {
   cursor: pointer;
   background-color: #0000;
   border: none;
@@ -78,16 +69,29 @@ html {
   font-size: 15px;
 }
 
-.wb-header-modal__clear-btn:hover {
+html .wb-container .wb-header-modal .wb-header-modal-header .wb-header-modal__clear-btn:hover {
   color: red;
   text-decoration: underline;
 }
 
-.wb-header-modal__close-btn:hover {
+html .wb-container .wb-header-modal .wb-header-modal-header .wb-header-modal__close-btn {
+  cursor: pointer;
+  background-color: #0000;
+  border: none;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+html .wb-container .wb-header-modal .wb-header-modal-header .wb-header-modal__close-btn:hover {
   color: red;
 }
 
-.wb-header-modal-footer {
+html .wb-container .wb-header-modal .wb-header-modal-content {
+  overflow-y: scroll;
+}
+
+html .wb-container .wb-header-modal .wb-header-modal-footer {
   border-top: 3px solid #d3d3d3;
   border-radius: 10px;
   flex-direction: row;
@@ -95,14 +99,14 @@ html {
   display: flex;
 }
 
-.wb-header-modal-footer__text, .wb-header-modal-footer__sum {
+html .wb-container .wb-header-modal .wb-header-modal-footer .wb-header-modal-footer__text, html .wb-container .wb-header-modal .wb-header-modal-footer .wb-header-modal-footer__sum {
   margin: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: 400;
 }
 
-.wb-container__slider {
+html .wb-container .wb-container__slider {
   background-color: #b5b3b3;
   border-radius: 20px;
   width: 90%;
@@ -110,20 +114,20 @@ html {
   margin-top: 50px;
 }
 
-.wb-container__hits {
+html .wb-container .wb-container__hits {
   color: #f0f0f0;
   font-family: Arial;
   display: flex;
 }
 
-.wb-container__cards {
+html .wb-container .wb-container__cards {
   flex-flow: wrap;
   width: 100%;
   height: 100%;
   display: flex;
 }
 
-.card-container {
+html .wb-container .wb-container__cards .card-container {
   box-sizing: border-box;
   border: 2px solid #fff;
   border-radius: 20px;
@@ -135,14 +139,14 @@ html {
   display: flex;
 }
 
-.card-box {
+html .wb-container .wb-container__cards .card-container .card-box {
   width: 90%;
   height: 100%;
   margin-top: 10px;
   position: relative;
 }
 
-.card-box__image {
+html .wb-container .wb-container__cards .card-container .card-box .card-box__image {
   box-sizing: border-box;
   background-size: cover;
   border: 1px solid #fff;
@@ -151,7 +155,8 @@ html {
   height: 99%;
 }
 
-.card-box__quickview {
+html .wb-container .wb-container__cards .card-container .card-box .card-box__quickview {
+  cursor: zoom-in;
   color: #4f4f4f;
   opacity: .9;
   border-color: #0000;
@@ -165,12 +170,12 @@ html {
   left: 35px;
 }
 
-.card-box__quickview:active {
+html .wb-container .wb-container__cards .card-container .card-box .card-box__quickview:active {
   transition: all .2s;
   transform: scale(.95);
 }
 
-.card-box__discount {
+html .wb-container .wb-container__cards .card-container .card-box .card-box__discount {
   color: #fff;
   background-color: #c64646;
   padding: 5px;
@@ -182,7 +187,7 @@ html {
   left: 12px;
 }
 
-.card-box__buybtn {
+html .wb-container .wb-container__cards .card-container .card-box .card-box__buybtn {
   width: 50px;
   height: 50px;
   position: absolute;
@@ -190,23 +195,24 @@ html {
   left: 162px;
 }
 
-.card-box__buybtn:hover {
+html .wb-container .wb-container__cards .card-container .card-box .card-box__buybtn:hover {
+  cursor: pointer;
   transition: all .2s;
   transform: scale(.9);
 }
 
-.card-box__buybtn:active {
+html .wb-container .wb-container__cards .card-container .card-box .card-box__buybtn:active {
   transition: all .1s;
   transform: scale(.8);
 }
 
-.card-infozone {
+html .wb-container .wb-container__cards .card-container .card-infozone {
   width: 90%;
   height: 100px;
   position: relative;
 }
 
-.card-infozone__price {
+html .wb-container .wb-container__cards .card-container .card-infozone .card-infozone__price {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 22px;
@@ -216,7 +222,7 @@ html {
   left: 12px;
 }
 
-.card-infozone__priceCancel {
+html .wb-container .wb-container__cards .card-container .card-infozone .card-infozone__priceCancel {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
@@ -228,7 +234,7 @@ html {
   left: 150px;
 }
 
-.card-infozone__discription {
+html .wb-container .wb-container__cards .card-container .card-infozone .card-infozone__discription {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
@@ -236,6 +242,43 @@ html {
   position: absolute;
   top: 20px;
   left: 18px;
+}
+
+html .wb-container .modalPicture-window {
+  z-index: 1;
+  background-color: #fff;
+  border-radius: 15px;
+  width: 70vw;
+  height: 80vh;
+  display: none;
+  position: fixed;
+  top: 70px;
+}
+
+html .wb-container .modalPicture-window .modalPicture-windows__closebtn {
+  color: gray;
+  background: none;
+  border: none;
+  margin-top: 10px;
+  margin-left: 48%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+html .wb-container .modalPicture-window .modalPicture-windows__closebtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+html .wb-container .modalPicture-window .modalPictureZone {
+  border: no;
+  background-size: cover;
+  width: 92%;
+  height: 85%;
+  position: absolute;
+  top: 50px;
+  left: 35px;
 }
 
 /*# sourceMappingURL=index.38ec9247.css.map */
