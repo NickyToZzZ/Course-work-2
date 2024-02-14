@@ -53,6 +53,13 @@ html{
     border-bottom: 3px solid lightgrey;
     border-radius: 10px;
 }
+.wb-header-modal-content {
+    overflow-y: scroll;
+}
+.wb-header-modal-content-block {
+    border-bottom: 3px solid lightgrey;
+    border-top: 3px solid lightgrey;
+}
 .wb-header-modal__clear-btn{
     cursor: pointer;
     border: none;
@@ -104,10 +111,9 @@ html{
     border-radius: 20px;
 }
 .wb-container__hits{
-    align-self: flex-start;
+    display: flex;
     color: rgb(240, 240, 240);
     font-family: Arial;
-    margin-left: 100px
 }
 .wb-container__cards{
     width: 100%;

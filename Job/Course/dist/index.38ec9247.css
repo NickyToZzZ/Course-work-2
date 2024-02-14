@@ -60,6 +60,15 @@ html {
   display: flex;
 }
 
+.wb-header-modal-content {
+  overflow-y: scroll;
+}
+
+.wb-header-modal-content-block {
+  border-top: 3px solid #d3d3d3;
+  border-bottom: 3px solid #d3d3d3;
+}
+
 .wb-header-modal__clear-btn, .wb-header-modal__close-btn {
   cursor: pointer;
   background-color: #0000;
@@ -103,9 +112,8 @@ html {
 
 .wb-container__hits {
   color: #f0f0f0;
-  align-self: flex-start;
-  margin-left: 100px;
   font-family: Arial;
+  display: flex;
 }
 
 .wb-container__cards {

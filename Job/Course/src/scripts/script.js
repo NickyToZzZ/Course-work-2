@@ -10,7 +10,6 @@ function createWBElements(){
     const headerWB = createPageElement("div", "wb-header", mainContainer, "", "", ""); //хеадер
     const logoWB = createPageElement("img", "wb-header__wblogo", headerWB, "", "", ""); //логотип
     const searchWB = createPageElement("input", "wb-header__search", headerWB, "", "","Поиск..."); //поле поиска
-
         // настраиваем поиск по странице
         searchWB.addEventListener("input", () => {
             let searchValue = searchWB.value.toLowerCase().trim();
@@ -34,8 +33,9 @@ function createWBElements(){
         const modalContent = createPageElement("div", "wb-header-modal-content", modalCart, "", "", ""); // содержимое модального окна
         const modalClearBtn = createPageElement("button", "wb-header-modal__clear-btn", modalHeader, "", "Очистить корзину", ""); // кнопка очистить корзину
             modalClearBtn.addEventListener("click", () => {
-                localStorage.clear()
-                modalContent.innerHTML = ""
+                localStorage.clear();
+                modalContent.innerHTML = "";
+                modalSumCalc.innerHTML = "";
             })
         const modalCloseBtn = createPageElement("button", "wb-header-modal__close-btn", modalHeader, "", "X", ""); // кнопка закрытия модального окна
         const modalSumZone = createPageElement("div", "wb-header-modal-footer", modalCart,"", "", ""); // Футтер с суммой всех товаров
@@ -61,8 +61,8 @@ createWBElements();
 // функция получения mockap 
 async function getData() {
     let response = await fetch('https://65cb5414efec34d9ed87430b.mockapi.io/wb1/WB/');
-    let banners = await response.json();
-    return banners;
+    let productCards = await response.json();
+    return productCards;
 };
 getData().then(item => {
     item.forEach(element => {
@@ -77,6 +77,13 @@ function createWBCard(obj){
     const cardsWBZone = document.querySelector(".wb-container__cards");
     const cardContainer = createPageElement("div", "card-container", cardsWBZone, "", "", ""); //Контейнер для карточки товара
     const cardPictureZone = createPageElement("div", "card-box", cardContainer, "", "", ""); //Область с картинкой, скидкой и кнопкой "Добавить в корзину"
+        //Показываем кнопку "Быстрый просмотр" при наведении на карточку товара
+        cardPictureZone.addEventListener('mouseover', function(){
+        cardPictureQuickBtn.style.display = "block";
+        })
+        cardPictureZone.addEventListener('mouseout', function(){
+        cardPictureQuickBtn.style.display = "none";
+        })
     const cardPicture = createPageElement("div", "card-box__image", cardPictureZone, "", "", ""); //Картинка товара
     const cardPictureQuickBtn = createPageElement("button", "card-box__quickview", cardPictureZone, "", "Быстрый просмотр", ""); //кнопка "Быстрый просмотр"
         // увеличение картинки
@@ -86,10 +93,7 @@ function createWBCard(obj){
         // добавляем карту в LS
         cardBuyBtn.addEventListener("click", (event) => {
             addToLS(obj.id, obj.title, newPrice);
-            event.preventDefault();
-            if (event.target.classList.contains("card-box__buybtn")) {
-                getFromLS(document.querySelector(".wb-header-modal-content"));
-            }
+            getFromLS(document.querySelector(".wb-header-modal-content"));
         })
     const cardInfoZone =createPageElement("div", "card-infozone", cardContainer, "", "", ""); //Область с ценой, старой ценой и наименованием товара
     const cardPrice = createPageElement("h4", "card-infozone__price", cardInfoZone, "",  newPrice + "$", ""); //Цена товара
@@ -99,12 +103,4 @@ function createWBCard(obj){
     // Добавляем аттрибуты элементам
     cardPicture.style.backgroundImage = `url('${obj.picture}?=random${obj.id}')`;
     cardBuyBtn.setAttribute("src", "https://www.expresselectrical.co.uk/imagecache/33034493-5989-403c-99d4-a9570075c59a/Order-Information_592x591.png");
-
-    //Показываем кнопку "Быстрый просмотр" при наведении на карточку товара
-    cardPictureZone.addEventListener('mouseover', function(){
-        cardPictureQuickBtn.style.display = "block";
-    })
-    cardPictureZone.addEventListener('mouseout', function(){
-        cardPictureQuickBtn.style.display = "none";
-    })
 }

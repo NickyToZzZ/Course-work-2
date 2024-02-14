@@ -23,13 +23,12 @@ export function addToLS(itemId, itemTitle, itemPrice) {
 
 // извлекаем из LS
 export function getFromLS (holder) {
-    let items = localStorage.getItem("Products") ? Array.from(JSON.parse(localStorage.getItem("Products"))) : [];
+    let items = localStorage.getItem("Products") ? JSON.parse(localStorage.getItem("Products")) : [];
+    console.log(items)
     let totalPrice = 0;
-    if (items.length > 0) {
-        for (let i = 0; i < items.length; i++) {
-            holder.innerHTML += "Товар: " + items[i].title + ", " + " Цена: " + items[i].price;
-            totalPrice += +items[i].price;
-        }
-        document.querySelector(".wb-header-modal-footer__text").innerHTML = totalPrice;
-    } 
+    for (let i = 0; i < items.length; i++) {
+        holder.innerHTML += `<div class="wb-header-modal-content"><p>Товар: - ${items[i].title}</p><p>Цена: - ${items[i].price}</p></div>`;
+        totalPrice += items[i].price;
+    }
+    document.querySelector(".wb-header-modal-footer__sum").innerHTML = totalPrice;
 }

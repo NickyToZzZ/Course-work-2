@@ -608,6 +608,7 @@ function createWBElements() {
     modalClearBtn.addEventListener("click", ()=>{
         localStorage.clear();
         modalContent.innerHTML = "";
+        modalSumCalc.innerHTML = "";
     });
     const modalCloseBtn = (0, _moduleJs.createPageElement)("button", "wb-header-modal__close-btn", modalHeader, "", "X", ""); // кнопка закрытия модального окна
     const modalSumZone = (0, _moduleJs.createPageElement)("div", "wb-header-modal-footer", modalCart, "", "", ""); // Футтер с суммой всех товаров
@@ -629,8 +630,8 @@ createWBElements();
 // функция получения mockap 
 async function getData() {
     let response = await fetch("https://65cb5414efec34d9ed87430b.mockapi.io/wb1/WB/");
-    let banners = await response.json();
-    return banners;
+    let productCards = await response.json();
+    return productCards;
 }
 getData().then((item)=>{
     item.forEach((element)=>{
@@ -644,6 +645,13 @@ function createWBCard(obj) {
     const cardsWBZone = document.querySelector(".wb-container__cards");
     const cardContainer = (0, _moduleJs.createPageElement)("div", "card-container", cardsWBZone, "", "", ""); //Контейнер для карточки товара
     const cardPictureZone = (0, _moduleJs.createPageElement)("div", "card-box", cardContainer, "", "", ""); //Область с картинкой, скидкой и кнопкой "Добавить в корзину"
+    //Показываем кнопку "Быстрый просмотр" при наведении на карточку товара
+    cardPictureZone.addEventListener("mouseover", function() {
+        cardPictureQuickBtn.style.display = "block";
+    });
+    cardPictureZone.addEventListener("mouseout", function() {
+        cardPictureQuickBtn.style.display = "none";
+    });
     const cardPicture = (0, _moduleJs.createPageElement)("div", "card-box__image", cardPictureZone, "", "", ""); //Картинка товара
     const cardPictureQuickBtn = (0, _moduleJs.createPageElement)("button", "card-box__quickview", cardPictureZone, "", "\u0411\u044B\u0441\u0442\u0440\u044B\u0439 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440", ""); //кнопка "Быстрый просмотр"
     // увеличение картинки
@@ -653,8 +661,7 @@ function createWBCard(obj) {
     // добавляем карту в LS
     cardBuyBtn.addEventListener("click", (event)=>{
         (0, _moduleJs.addToLS)(obj.id, obj.title, newPrice);
-        event.preventDefault();
-        if (event.target.classList.contains("card-box__buybtn")) (0, _moduleJs.getFromLS)(document.querySelector(".wb-header-modal-content"));
+        (0, _moduleJs.getFromLS)(document.querySelector(".wb-header-modal-content"));
     });
     const cardInfoZone = (0, _moduleJs.createPageElement)("div", "card-infozone", cardContainer, "", "", ""); //Область с ценой, старой ценой и наименованием товара
     const cardPrice = (0, _moduleJs.createPageElement)("h4", "card-infozone__price", cardInfoZone, "", newPrice + "$", ""); //Цена товара
@@ -663,13 +670,6 @@ function createWBCard(obj) {
     // Добавляем аттрибуты элементам
     cardPicture.style.backgroundImage = `url('${obj.picture}?=random${obj.id}')`;
     cardBuyBtn.setAttribute("src", "https://www.expresselectrical.co.uk/imagecache/33034493-5989-403c-99d4-a9570075c59a/Order-Information_592x591.png");
-    //Показываем кнопку "Быстрый просмотр" при наведении на карточку товара
-    cardPictureZone.addEventListener("mouseover", function() {
-        cardPictureQuickBtn.style.display = "block";
-    });
-    cardPictureZone.addEventListener("mouseout", function() {
-        cardPictureQuickBtn.style.display = "none";
-    });
 }
 
 },{"./module.js":"lFa3e"}],"lFa3e":[function(require,module,exports) {
@@ -702,15 +702,14 @@ function addToLS(itemId, itemTitle, itemPrice) {
     ]));
 }
 function getFromLS(holder) {
-    let items = localStorage.getItem("Products") ? Array.from(JSON.parse(localStorage.getItem("Products"))) : [];
+    let items = localStorage.getItem("Products") ? JSON.parse(localStorage.getItem("Products")) : [];
+    console.log(items);
     let totalPrice = 0;
-    if (items.length > 0) {
-        for(let i = 0; i < items.length; i++){
-            holder.innerHTML += "\u0422\u043E\u0432\u0430\u0440: " + items[i].title + ", " + " \u0426\u0435\u043D\u0430: " + items[i].price;
-            totalPrice += +items[i].price;
-        }
-        document.querySelector(".wb-header-modal-footer__text").innerHTML = totalPrice;
+    for(let i = 0; i < items.length; i++){
+        holder.innerHTML += `<div class="wb-header-modal-content"><p>\u{422}\u{43E}\u{432}\u{430}\u{440}: - ${items[i].title}</p><p>\u{426}\u{435}\u{43D}\u{430}: - ${items[i].price}</p></div>`;
+        totalPrice += items[i].price;
     }
+    document.querySelector(".wb-header-modal-footer__sum").innerHTML = totalPrice;
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
