@@ -1,7 +1,9 @@
+@import "./variables.scss";
+
 body{
     margin: 0;
     padding: 0;
-    background: linear-gradient(90deg, rgba(126,57,230,1) 0%, rgba(130,66,165,1) 100%)!important;
+    background: $page-background;
     .wb-container{
         width: 1170px;
         height: 100%;
@@ -42,35 +44,35 @@ body{
             width: 300px;
             height: 500px;
             background-color: white;
-            border: 3px solid lightgrey;
+            border: 3px solid $border-color;
             border-radius: 10px;
             .wb-header-modal-header {
                 display: flex;
                 justify-content: space-around;
-                border-bottom: 3px solid lightgrey;
+                border-bottom: 3px solid $border-color;
                 border-radius: 10px;
                 .wb-header-modal__clear-btn{
                     cursor: pointer;
                     border: none;
-                    font-family: Arial, Helvetica, sans-serif;
+                    font-family: $font-main;
                     font-size: 15px;
                     background-color: transparent;
                     padding: 5px;
                 }
                 .wb-header-modal__clear-btn:hover {
                     text-decoration: underline;
-                    color: red;
+                    color: $btn-hover-color;
                 }
                 .wb-header-modal__close-btn{
                     cursor: pointer;
                     border: none;
-                    font-family: Arial, Helvetica, sans-serif;
+                    font-family: $font-main;
                     font-size: 15px;
                     background-color: transparent;
                     padding: 5px;
                 }
                 .wb-header-modal__close-btn:hover{
-                    color: red;
+                    color: $btn-hover-color;
                 }  
             }
             .wb-header-modal-content {
@@ -80,16 +82,16 @@ body{
                 display:  flex;
                 flex-direction: row;
                 justify-content: space-between;
-                border-top: 3px solid lightgrey;
+                border-top: 3px solid $border-color;
                 border-radius: 10px;
                 .wb-header-modal-footer__text{
-                    font-family: Arial, Helvetica, sans-serif;
+                    font-family: $font-main;
                     font-size: 15px;
                     margin: 10px;
                     font-weight: 400;
                 }
                 .wb-header-modal-footer__sum{
-                    font-family: Arial, Helvetica, sans-serif;
+                    font-family: $font-main;
                     font-size: 15px;
                     margin: 10px;
                     font-weight: 400;
@@ -101,7 +103,7 @@ body{
             margin-top: 50px;
             .carousel__img {
                 width: 100%;
-                height: 300px;
+                height: 250px;
             }
         }
         .wb-container__hits{
@@ -118,7 +120,7 @@ body{
             .card-container{
                 width: 250px;
                 height: 400px;
-                border: 2px solid white;
+                border: 2px solid $border-color;
                 border-radius: 20px;
                 box-sizing: border-box;
                 display: flex;
@@ -133,7 +135,7 @@ body{
                     .card-box__image{
                         width: 99%;
                         height: 99%;
-                        border: 1px solid white;
+                        border: 1px solid $border-color;
                         background-size: cover;
                         border-radius: 10px;
                         box-sizing: border-box;
@@ -143,9 +145,9 @@ body{
                         display: none;
                         position: absolute;
                         top: 130px;
-                        left: 35px;
+                        left: 23px;
                         padding: 10px;
-                        font-family: Arial, Helvetica, sans-serif;
+                        font-family: $font-main;
                         font-weight: 600;
                         color: rgb(79, 79, 79);
                         border-radius: 10px;
@@ -162,8 +164,8 @@ body{
                         font-weight: 400;
                         color: white;
                         position: absolute;
-                        top: 239px;
-                        left: 12px;
+                        top: 245px;
+                        left: 20px;
                         background-color: rgb(198, 70, 70);
                         padding: 5px;
                     }
@@ -171,8 +173,8 @@ body{
                         width: 50px;
                         height: 50px;
                         position: absolute;
-                        top: 245px;
-                        left: 162px;
+                        top: 230px;
+                        left: 160px;
                     }
                     .card-box__buybtn:hover{
                         cursor: pointer;
@@ -188,41 +190,35 @@ body{
                     width: 90%;
                     height: 100px;
                     position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     .card-infozone__price{
                         color: white;
-                        font-family: Arial, Helvetica, sans-serif;
+                        font-family: $font-main;
                         font-size: 22px;
                         font-weight: 400;
-                        position: absolute;
-                        top: -17px;
-                        left: 12px;
                     }
                     .card-infozone__priceCancel{
                         color: white;
-                        font-family: Arial, Helvetica, sans-serif;
+                        font-family: $font-main;
                         font-size: 17px;
                         font-weight: 400;
                         text-decoration: line-through;
-                        text-decoration-color: red;
-                        position: absolute;
-                        top: -5px;
-                        left: 150px;
+                        text-decoration-color: $btn-hover-color;
                     }
                     .card-infozone__discription{
                         color: white;
-                        font-family: Arial, Helvetica, sans-serif;
+                        font-family: $font-main;
                         font-size: 17px;
                         font-weight: 400;
-                        position: absolute;
-                        top: 20px;
-                        left: 18px;
                     }
                 }
             }
         }
         .modalPicture-window{
             display: none;
-            z-index: 1;
+            z-index: 2;
             width: 70vw;
             height: 80vh;
             background-color: white;
@@ -237,7 +233,7 @@ body{
                 font-weight: 400;
                 font-size: 15px;
                 color: gray;
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: $font-main;
             }
             .modalPicture-windows__closebtn:hover{
                 cursor: pointer;
