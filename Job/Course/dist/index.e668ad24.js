@@ -619,7 +619,30 @@ function createWBElements() {
         modalCart.style.display = "block";
         return modalCart.style.display = "none";
     });
-    const sliderWB = (0, _moduleJs.createPageElement)("div", "wb-container__slider", mainContainer, "", "", ""); //временный слайдер
+    const sliderWB = (0, _moduleJs.createPageElement)("div", "wb-container__slider", mainContainer, "", "", "");
+    sliderWB.innerHTML = `<div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="carousel__img" src="https://loremflickr.com/640/480/food?random=1" alt="logo">
+                </div>
+                <div class="carousel-item">
+                    <img class="carousel__img" src="https://loremflickr.com/640/480/food?random=2" alt="logo">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">\u{41F}\u{440}\u{435}\u{434}\u{44B}\u{434}\u{443}\u{449}\u{438}\u{439}</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">\u{421}\u{43B}\u{435}\u{434}\u{443}\u{44E}\u{449}\u{438}\u{439}</span>
+            </button>
+          </div>
+        </div>`;
     const hitsWB = (0, _moduleJs.createPageElement)("h1", "wb-container__hits", mainContainer, "", "\u0425\u0438\u0442\u044B \u043F\u0440\u043E\u0434\u0430\u0436:", ""); //Заголовок "Хиты продаж"
     const cardsWB = (0, _moduleJs.createPageElement)("div", "wb-container__cards", mainContainer, "", "", ""); //Область с карточками товара"
     // Добавляем аттрибуты элементам
